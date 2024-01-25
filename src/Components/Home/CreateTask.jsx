@@ -1,5 +1,6 @@
 import toast, { Toaster } from 'react-hot-toast';
 import useAxios from "../../Hooks/useAxios";
+import Swal from 'sweetalert2';
 
 
 const CreateTask = () => {
@@ -17,7 +18,14 @@ const CreateTask = () => {
             .then(res=>{ 
                 console.log(res.data);
                 if(res.data.insertedId){
-                    toast.success('Successfully toasted!')
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Your work has been saved",
+                        showConfirmButton: false,
+                        timer: 1500
+                      });
+                      window.location.reload();
                 }
                 form.reset();
             })

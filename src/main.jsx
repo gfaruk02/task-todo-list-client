@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import Layout from './Components/Layout';
 import Home from './Pages/Home';
+import Completed from './Components/Home/Completed';
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,11 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>
+      },
+      {
+        path: '/completed',
+        element:<Completed></Completed>,
+        loader: () => fetch('http://localhost:5000/taskList')
       }
     ]
   },
