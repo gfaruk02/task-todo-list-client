@@ -13,12 +13,12 @@ const Home = () => {
             <CreateTask></CreateTask>
 
             <div role="tablist" className="px-2 tabs tabs-lifted w-full lg:w-10/12 mx-auto mt-5">
-                <input type="radio" name="my_tabs_2" role="tab" className="tab ml-20 lg:ml-36 text-sm lg:text-xl font-semibold text-gray-900" aria-label="View All Tesks" checked/>
+                <input type="radio" name="my_tabs_2" role="tab" className="tab ml-20 lg:ml-36 text-sm lg:text-xl font-semibold text-gray-900" aria-label="View"  aria-checked="true" checked/>
                 <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box lg:p-6">
 
                 <ViewTask></ViewTask>
                 </div>
-                <input type="radio" name="my_tabs_2" role="tab" className="tab text-xl font-semibold text-gray-900 px-2" aria-label="Complete Task" />
+                <input type="radio" name="my_tabs_2" role="tab" className="tab text-xl font-semibold text-gray-900 px-2" aria-label="Completed" />
                 <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box lg:p-6">
 
                 <div className="overflow-x-auto">

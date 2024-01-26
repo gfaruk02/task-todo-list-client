@@ -8,9 +8,10 @@ const Completed = () => {
     const taskdata = useTasks()
     const axios = useAxios()
     const [tasks, setTasks] = useState()
+    const filterTasks = taskdata?.filter(task=> task.role === "Completed")
     useEffect(()=>{
-        setTasks(taskdata)
-    },[taskdata])
+        setTasks(filterTasks)
+    },[filterTasks])
     const handleDelete = (_id) => {
         Swal.fire({
             title: "Are you sure?",
@@ -30,7 +31,7 @@ const Completed = () => {
                     text: "Your file has been deleted.",
                     icon: "success"
                   });
-                  const remaining = tasks.filter(food => food._id !== _id);
+                  const remaining = tasks.filter(task => task._id !== _id);
                   setTasks(remaining);
                }
               })
