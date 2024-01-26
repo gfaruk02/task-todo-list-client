@@ -1,6 +1,6 @@
 import useAxios from "../../Hooks/useAxios";
 import useTasks from "../../Hooks/useTasks";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Swal from "sweetalert2";
 
 const Completed = () => {
@@ -8,7 +8,10 @@ const Completed = () => {
     const taskdata = useTasks()
     const axios = useAxios()
     const [tasks, setTasks] = useState()
-    const filterTasks = taskdata?.filter(task=> task.role === "Completed")
+    // const filterTasks = taskdata?.filter(task=> task.role === "Completed")
+    const filterTasks = useMemo(() => {
+        return taskdata?.filter(task => task.role === "Completed");
+    }, [taskdata]);
     useEffect(()=>{
         setTasks(filterTasks)
     },[filterTasks])
@@ -31,8 +34,8 @@ const Completed = () => {
                     text: "Your file has been deleted.",
                     icon: "success"
                   });
-                  const remaining = tasks.filter(task => task._id !== _id);
-                  setTasks(remaining);
+                  setTasks((tasks) => tasks.filter((task) => task._id !== _id));
+                        
                }
               })
             }
@@ -57,7 +60,7 @@ const Completed = () => {
                 <td>{task.title} </td>
                 <td>{task.description}</td>
                 <td className="flex flex-row gap-2">
-                <button onClick={() => handleDelete(task._id)} className=" px-3 py-2 font-semibold bg-red-400 rounded-lg hover:bg-red-700 hover:text-white"> Delete</button>
+                <button onClick={() => handleDelete(task._id)} className="max-h-10 px-3 py-2 font-semibold bg-red-400 rounded-lg hover:bg-red-700 hover:text-white"> Delete</button>
                 </td>
             </tr>
             )}
