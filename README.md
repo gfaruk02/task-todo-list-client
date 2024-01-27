@@ -24,5 +24,24 @@ Answer: Using the system is very easy. When you open this app, you'll notice its
   Thank You
 =================
 
+Provide a brief explanation of the code structure and key decisions you made.
+
+
+Code Structure:
+
+Client and Server Separation: client-side (React) and server-side (Node.js with Express).
+The frontend code is task-todo-list-client folder, and the backend code is task-todo-list-server folder.
+
+Backend (Node.js with Express):
+Routes: write functionality for find,edit,delete, put data 
+Middleware: Use middleware
+Database (MongoDB):
+
+
+Frontend (React.js):
+Components: Organize components based on functionality. 
+State Management: Depending on the application size and complexity
+API Communication:Fetch or Axios
+Custom hooks: user custom hook for fetching data
 
   
