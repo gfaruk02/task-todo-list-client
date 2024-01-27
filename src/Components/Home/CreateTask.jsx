@@ -33,7 +33,7 @@ const CreateTask = () => {
             });
     }
     return (
-        <div className="px-2 py-5 border-b-2 border-gray-300 w-full lg:w-10/12 mx-auto">
+        <div className="px-2 py-5 border-b-2 border-gray-300 w-full lg:w-11/12 mx-auto">
             <h1 className="text-3xl font-semibold"> Create Task List</h1>
             <form onSubmit={handleTaskCreate} className="py-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 items-center mx-auto">
                 <div className="form-control">
