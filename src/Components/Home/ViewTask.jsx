@@ -3,7 +3,6 @@ import useAxios from "../../Hooks/useAxios";
 import useTasks from "../../Hooks/useTasks";
 import Swal from "sweetalert2";
 
-
 const ViewTask = () => {
     const taskdata = useTasks()
     const axios = useAxios()
@@ -36,7 +35,6 @@ const ViewTask = () => {
             }
         });
     }
-
     const handleCompleted = (task) => {
         console.log(task);
         Swal.fire({
@@ -67,7 +65,8 @@ const ViewTask = () => {
         const form = e.target
         const title = form.title.value;
         const description = form.description.value;
-        const editTask = { title, description }
+        const deadlines = form.deadlines.value;
+        const editTask = { title, description, deadlines }
         console.log(editTask);
         axios.put(`/taskList/${_id}`, editTask)
             .then(res => {
@@ -88,7 +87,6 @@ const ViewTask = () => {
             .catch(err => console.log(err));
     }
     return (
-
         <div className="overflow-x-auto">
             <table className="table px-2">
                 <thead>
@@ -96,6 +94,7 @@ const ViewTask = () => {
                         <th>Sl</th>
                         <th>Title</th>
                         <th>Description</th>
+                        <th>Deadlines</th>
                         <th>Action Status</th>
                     </tr>
                 </thead>
@@ -104,9 +103,9 @@ const ViewTask = () => {
                         <td>{index + 1}</td>
                         <td>{task.title} </td>
                         <td>{task.description}</td>
+                        <td>{task.deadlines}</td>
                         <td className="grid grid-cols-1 lg:grid-cols-3 gap-1 items-center text-sm">
                             <label htmlFor={`my_modal_${index}`} className="m-0 py-2 px-2 text-center font-semibold bg-sky-500 rounded-lg hover:bg-sky-800 hover:text-white max-h-10">Edit</label>
-
                             {/* Put this part before </body> tag */}
                             <input type="checkbox" id={`my_modal_${index}`} className="modal-toggle" />
                             <div className="modal" role="dialog">
@@ -124,6 +123,10 @@ const ViewTask = () => {
                                             </label>
                                             <textarea name="description" className="textarea textarea-bordered h-10" placeholder=" Write Tesk Description" defaultValue={task.description} required></textarea>
                                         </div>
+                                        <div className="col-span-full">
+                                <label className="text-sm">Deadlines</label> <br />
+                                <input name="deadlines" type="date" placeholder="deadlines" className="w-full py-2 rounded-md focus:ring focus:ri focus:ri border-gray-700 text-gray-900" defaultValue={task.deadlines}/>
+                            </div>
                                         <div className="md:mt-9">
                                             <button className="btn btn-primary bg-gray-400 border-none text-gray-950 font-bold hover:bg-orange-400"> Edit Task</button>
                                         </div>
@@ -135,11 +138,8 @@ const ViewTask = () => {
                             <td className="pl-0 m-0">
                                 {task.role === 'Completed' ? <span className="bg-green-800 max-h-10 px-2 py-2 font-semibold rounded-lg text-gray-400 text-sm">Completed</span> : <button onClick={() => handleCompleted(task)} className="max-h-10 px-2 py-2 font-semibold bg-green-400 rounded-lg hover:bg-green-800 hover:text-white"> Complete </button>}
                             </td>
-
                         </td>
                     </tr>)}
-
-
                 </tbody>
             </table>
             </div>

@@ -20,14 +20,13 @@ const router = createBrowserRouter([
       },
       {
         path: '/completed',
-        element:<Completed></Completed>,
-        loader: () => fetch('http://localhost:5000/taskList')
+        element: <Completed></Completed>,
       }
     ]
   },
 ]);
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-      <RouterProvider router={router} />
+    <RouterProvider router={router} />
   </React.StrictMode>,
 )
